@@ -4,14 +4,14 @@
 #get element by index -> +
 #length -> +
 #remove -> +
-#double list
-#reversed_list
+#reversed_list -> 
 # 3 task with linked lists
 
 class Node:
-    def __init__(self, value, next=None):
+    def __init__(self, value, next=None, previous=None):
         self.value = value
         self.next = next
+        self.previous = previous
 
     def __repr__(self):
         return self.value
@@ -37,6 +37,7 @@ class LinkedList:
             self.head = self.tail = new_node
             return
         self.tail.next = new_node
+        new_node.previous = self.tail
         self.tail = new_node # -> keeps the last element for efficiency
 
 
@@ -69,12 +70,21 @@ class LinkedList:
 
 
     def length(self):
-        cur = self.head
+        current_node = self.head
         length = 1
-        while cur.next:
+        while current_node.next:
             length += 1
-            cur = cur.next
+            current_node = current_node.next
         return length
+    
+
+    def reverse(self):
+        nodes = []
+        current_node = self.tail
+        while current_node:
+            nodes.append(repr(current_node))
+            current_node = current_node.previous
+        return "->".join(nodes)
 
     
     def __repr__(self):
@@ -101,4 +111,4 @@ a.replace_by_index(0,'6')
 print(a.get_element(0)) #5
 print(a.length()) #4
 
-print(a) #5->1->2->3
+print(a.reverse()) #5->1->2->3
