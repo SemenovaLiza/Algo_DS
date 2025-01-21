@@ -96,19 +96,19 @@ class LinkedList:
         return "->".join(nodes)
 
 
+if __name__=="__main__":
+    a = LinkedList()
+    a.append('5')
+    a.append('1')
+    a.append('2')
+    a.append('3')
+    a.insert_by_index(2,'6')
+    a.insert_by_index(1,'6')
+    a.replace_by_index(0,'6')
 
-a = LinkedList()
-a.append('5')
-a.append('1')
-a.append('2')
-a.append('3')
-a.insert_by_index(2,'6')
-a.insert_by_index(1,'6')
-a.replace_by_index(0,'6')
+    a.replace_by_index(2, '1.5')
+    a.remove(2)
+    print(a.get_element(0)) #5
+    print(a.length()) #4
 
-#a.replace_by_index(2, '1.5')
-#a.remove(2)
-print(a.get_element(0)) #5
-print(a.length()) #4
-
-print(a.reverse()) #5->1->2->3
+    print(a.reverse()) #5->1->2->3
